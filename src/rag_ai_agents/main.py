@@ -10,12 +10,22 @@ from inngest.experimental import ai
 
 load_dotenv() # Load environment variables
 
-# Load clients
+# Create clients
 inngest_client = inngest.Inngest(
     app_id="rag_app",
-    logging=logging.getLogger("uvicorn"),
-    is_production=False,
+    logger=logging.getLogger("uvicorn"),
+    is_production=False, # While in development mode, set to false
     serializer=inngest.PydanticSerializer()
 )
 
+@inngest_client.create_function(
+    fn_id="RAG: Ingest PDF",
+    trigger=inngest.TriggerEvent(event="rag/ingest_pdf") # Trigger to ingest client server
+)
+
+async def rag_ingest_pdf(context: inngest.Context):
+    return {"hello": "world"}
+
 app = FastAPI()
+
+inngest.fast_api.serve(app, inngest_client, [rag_ingest_pdf])

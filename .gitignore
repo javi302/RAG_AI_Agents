@@ -1,2 +1,6 @@
 .venv
 .env
+/qdrant_storage
+src/rag_ai_agents/package-lock.json
+src/rag_ai_agents/package.json
+src/rag_ai_agents/node_modules/
