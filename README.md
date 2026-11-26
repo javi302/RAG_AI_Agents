@@ -8,3 +8,4 @@ This repository is an AI RAG system ready for production deployment.
   Inngest is used for the orchestration and observability.
   LlamaIndex is the tool the model will use to ingest PDFs.
   Anthropic API is used for the LLM.
+ 
