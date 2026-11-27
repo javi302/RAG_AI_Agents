@@ -7,6 +7,8 @@ import uuid
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from inngest.experimental import ai
+from .data_loader import embed_text, load_and_chunk_pdf
+from .vector_db import QdrantStorage
 
 load_dotenv() # Load environment variables
 
